@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidsample.R
 import com.example.androidsample.data.pojo.User
+import com.google.android.material.card.MaterialCardView
+import kotlinx.android.synthetic.main.item_user.view.*
 
 class UsersAdapter(
-
+    private val onItemClick: (User, view: View) -> Unit
 ) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private var items: MutableList<User> = mutableListOf()
@@ -24,6 +26,9 @@ class UsersAdapter(
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = items[position]
+        holder.itemView.setOnClickListener {
+            onItemClick(user, holder.itemView.userImageView)
+        }
         holder.bind(user)
     }
 
@@ -32,8 +37,10 @@ class UsersAdapter(
     }
 
     inner class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(user: User) {
-
+        fun bind(user: User) = with(itemView) {
+            //userImageView.setImageResource(user.image)
+            userImageView.transitionName = user.id
+            userNameTextView.text = user.name
         }
     }
 }
