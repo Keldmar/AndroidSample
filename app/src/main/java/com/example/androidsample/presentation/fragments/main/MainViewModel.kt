@@ -1,12 +1,13 @@
 package com.example.androidsample.presentation.fragments.main
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidsample.R
 import com.example.androidsample.data.pojo.User
 import java.util.*
 
-class MainViewModel : ViewModel() {
+class MainViewModel @ViewModelInject constructor() : ViewModel() {
 
     val users: MutableLiveData<MutableList<User>> = MutableLiveData()
 

@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.androidsample.R
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RootActivity: AppCompatActivity() {
 
     var navController: NavController? = null
